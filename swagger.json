@@ -1,0 +1,129 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "title": "Documentation - API",
+      "description": "Documentation for Users API",
+      "version": "1.0.0",
+      "contact": {
+          "email": "marcelfcordeiro@gmail.com"
+      }
+  },
+  "paths": {
+      "/users": {
+          "post": {
+              "tags": [
+                  "User"
+              ],
+              "summary": "Create a User",
+              "description": "Create a new user",
+              "requestBody": {
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "email": {
+                                      "type": "string"
+                                  }
+                              },
+                              "example": {
+                                  "name": "Username",
+                                  "email": "username@email.com"
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Created"
+                  },
+                  "400": {
+                      "description": "Bad Request"
+                  },
+                  "500": {
+                      "description": "Internal server error"
+                  }
+              }
+          },
+          "get": {
+            "tags": [
+                "User"
+            ],
+            "summary": "List all users",
+            "description": "List all users",
+            "responses": {
+                "200": {
+                    "description": "Success"
+                },
+                "400": {
+                    "description": "Bad Request"
+                },
+                "500": {
+                    "description": "Internal server error"
+                }
+            }
+          }
+      },
+      "/{user_id}/admin": {
+          "patch": {
+              "tags": [
+                  "User"
+              ],
+              "summary": "Turn a User admin",
+              "description": "urn a User admin",
+              "parameters": [
+                  {
+                      "in": "path",
+                      "name": "user_id",
+                      "required": true,
+                      "description": "User id"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Created"
+                  },
+                  "400": {
+                      "description": "Bad request"
+                  },
+                  "500": {
+                      "description": "Internal server error"
+                  }
+              }
+          }
+      },
+      "/{user_id}": {
+          "get": {
+              "tags": [
+                  "User"
+              ],
+              "summary": "Show a User",
+              "description": "Show a user",
+              "parameters": [
+                {
+                    "in": "path",
+                    "name": "user_id",
+                    "required": true,
+                    "description": "User id"
+                }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  },
+                  "400": {
+                      "description": "Bad Request"
+                  },
+                  "500": {
+                      "description": "Internal server error"
+                  }
+              }
+          }
+      }
+
+  }
+}
